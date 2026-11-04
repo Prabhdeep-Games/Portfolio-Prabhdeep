@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
         
@@ -375,16 +374,11 @@
     <div class="content-section p-8 md:p-12 shadow-xl animate-on-scroll">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Card 1 -->
-        <div class="game-card content-section p-6 cursor-pointer"> 
-          <model-viewer
-  src="texturedcycle.glb"
-  alt="3D model of a stylized toy cycle with twisted handles and no seat"
-  camera-controls
-  auto-rotate
-  shadow-intensity="1"
-  exposure="1"
-  class="w-full h-[300px] rounded-lg overflow-hidden bg-slate-800">
-</model-viewer>
+        <div class="game-card content-section p-6">
+          <button type="button" class="model-load relative block w-full h-[300px] rounded-lg overflow-hidden bg-slate-800 mb-4" data-src="texturedcycle.glb" data-alt="3D model of a stylized toy cycle with twisted handles and no seat">
+  <img src="media/prop-cycle.jpg" alt="3D model of a stylized toy cycle with twisted handles and no seat" width="640" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover">
+  <span class="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-2 rounded-full bg-slate-900/90 text-white text-sm font-medium">Load 3D model (7.6 MB)</span>
+</button>
 
           <h3 class="text-xl font-bold mb-2 text-white">Toy Cycle</h3>
           <p class="text-gray-300 mb-4">A stylized toy cycle model with twisted handles and no seat, designed as an environmental prop.</p>
@@ -395,16 +389,11 @@
           </div>
         </div>
         <!-- Card 2 -->
-        <div class="game-card content-section p-6 cursor-pointer">
-          <model-viewer
-  src="awaara_normaldil.glb"
-  alt="3D model of a human heart"
-  camera-controls
-  auto-rotate
-  shadow-intensity="1"
-  exposure="1"
-  class="w-full h-[300px] rounded-lg overflow-hidden bg-slate-800">
-</model-viewer>
+        <div class="game-card content-section p-6">
+          <button type="button" class="model-load relative block w-full h-[300px] rounded-lg overflow-hidden bg-slate-800 mb-4" data-src="awaara_normaldil.glb" data-alt="3D model of a human heart">
+  <img src="media/prop-heart.jpg" alt="3D model of a human heart" width="640" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover">
+  <span class="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-2 rounded-full bg-slate-900/90 text-white text-sm font-medium">Load 3D model (14 MB)</span>
+</button>
 
 
           <h3 class="text-xl font-bold mb-2 text-white">Human Heart</h3>
@@ -416,16 +405,11 @@
           </div>
         </div>
         <!-- Card 3 -->
-        <div class="game-card content-section p-6 cursor-pointer">
-          <model-viewer
-  src="texturedscrewdriver.glb"
-  alt="3D model of a screwdriver"
-  camera-controls
-  auto-rotate
-  shadow-intensity="1"
-  exposure="1"
-  class="w-full h-[300px] rounded-lg overflow-hidden bg-slate-800">
-</model-viewer>
+        <div class="game-card content-section p-6">
+          <button type="button" class="model-load relative block w-full h-[300px] rounded-lg overflow-hidden bg-slate-800 mb-4" data-src="texturedscrewdriver.glb" data-alt="3D model of a screwdriver">
+  <img src="media/prop-screwdriver.jpg" alt="3D model of a screwdriver" width="640" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover">
+  <span class="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-2 rounded-full bg-slate-900/90 text-white text-sm font-medium">Load 3D model (7.3 MB)</span>
+</button>
           <h3 class="text-xl font-bold mb-2 text-white">Screwdriver</h3>
           <p class="text-gray-300 mb-4">A highly detailed 3D construction screwdriver, modeled as a functional handheld prop.</p>
           <div class="flex flex-wrap gap-2">
@@ -1123,6 +1107,30 @@ I bring a mix of creative instinct and production discipline. If you’re lookin
             });
         });
         
+        // 3D props: fetch the viewer and the model only when asked for
+        let viewerRequested = false;
+        document.querySelectorAll('.model-load').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (!viewerRequested) {
+                    viewerRequested = true;
+                    const s = document.createElement('script');
+                    s.type = 'module';
+                    s.src = 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js';
+                    document.head.appendChild(s);
+                }
+                const mv = document.createElement('model-viewer');
+                mv.setAttribute('src', btn.dataset.src);
+                mv.setAttribute('alt', btn.dataset.alt);
+                mv.setAttribute('poster', btn.querySelector('img').getAttribute('src'));
+                mv.setAttribute('camera-controls', '');
+                mv.setAttribute('auto-rotate', '');
+                mv.setAttribute('shadow-intensity', '1');
+                mv.setAttribute('exposure', '1');
+                mv.className = 'w-full h-[300px] rounded-lg overflow-hidden bg-slate-800 mb-4 block';
+                btn.replaceWith(mv);
+            });
+        });
+
         // Modal functions
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
