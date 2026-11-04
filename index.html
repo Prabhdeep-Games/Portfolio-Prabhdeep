@@ -263,12 +263,35 @@
                     <a href="#contact" class="inline-block px-6 py-3 rounded-full text-white font-bold border-2 border-purple-500 hover:bg-purple-500/20 transition-all">Contact</a>
                 </div>
             </div>
-            <!--HERO-MEDIA-->
+            <figure>
+                <video class="bridge-clip w-full h-auto rounded-lg bg-slate-800" width="960" height="668" poster="media/bridge-hero.jpg" muted loop playsinline preload="none" aria-label="A rope bridge in Houdini: an end point is dragged and the bridge regenerates, then the simulated bridge breaks apart over two walls"><source src="media/bridge-hero.mp4" type="video/mp4"></video>
+                <figcaption class="text-sm text-gray-400 mt-2 text-center lg:text-left">Procedural rope bridge: moving an end point regenerates it, then the Vellum mode breaks it. Built in Houdini following Double Jump Academy's Houdini for Games course.</figcaption>
+            </figure>
         </div>
     </section>
     
     
     
+    <!-- Houdini Case Study -->
+    <section id="bridge-tool" class="py-12 px-4 scroll-mt-20">
+        <div class="container mx-auto">
+            <div class="content-section p-6 md:p-12 space-y-12">
+                <div class="max-w-3xl">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500">Procedural Rope Bridge</h2>
+                    <p class="text-gray-300 mb-3">A Houdini digital asset, built in Houdini Apprentice and saved in its non-commercial .hdanc format.</p>
+                    <p class="text-gray-300 border-l-4 border-purple-500 pl-4"><strong class="text-white">Credit:</strong> I built this tool by following the Houdini for Games course from Double Jump Academy.</p>
+                </div>
+<div class="max-w-3xl"><div><h3 class="text-xl md:text-2xl font-bold mb-3 text-purple-400">What the tool does</h3><p class="text-gray-300 mb-3">It is a reusable digital asset, not a one-off model. You define a curve between two points and the tool generates the whole structure: planks, rope railings, knots and anchors.</p></div></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center"><div><h3 class="text-xl md:text-2xl font-bold mb-3 text-purple-400">Why procedural instead of by hand</h3><p class="text-gray-300 mb-3">A hand-modeled bridge fits one gap. Changing its length or plank spacing means reworking it. This tool takes a curve and regenerates the planks, railings, knots and anchors when the curve or a parameter changes, so one asset covers any length of bridge.</p></div><figure><video class="bridge-clip w-full h-auto rounded-lg bg-slate-800" width="960" height="668" poster="media/bridge-endpoints.jpg" muted loop playsinline preload="none" controls aria-label="An end point of the bridge curve is moved in the Houdini viewport and the bridge updates"><source src="media/bridge-endpoints.mp4" type="video/mp4"></video><figcaption class="text-sm text-gray-400 mt-2">Moving an end point of the curve.</figcaption></figure></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center"><div><h3 class="text-xl md:text-2xl font-bold mb-3 text-purple-400">Parameter interface</h3><p class="text-gray-300 mb-3">The asset has an artist-facing panel that exposes plank density, scale, rope twist and railing spacing (labeled Railing Closeness in the panel).</p></div><figure><video class="bridge-clip w-full h-auto rounded-lg bg-slate-800" width="960" height="966" poster="media/bridge-params.jpg" muted loop playsinline preload="none" controls aria-label="Sliders in the parameter panel are dragged while the bridge updates in the viewport below"><source src="media/bridge-params.mp4" type="video/mp4"></video><figcaption class="text-sm text-gray-400 mt-2">Driving the parameters, with the panel above the viewport.</figcaption></figure></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center"><div><h3 class="text-xl md:text-2xl font-bold mb-3 text-purple-400">Two rope styles</h3><p class="text-gray-300 mb-3">The Rope Style menu has two options: a diagonal weave and a cargo net. The clip switches from one to the other, then moves in on the knots.</p></div><figure><video class="bridge-clip w-full h-auto rounded-lg bg-slate-800" width="960" height="966" poster="media/bridge-ropes.jpg" muted loop playsinline preload="none" controls aria-label="The Rope Style menu is switched from Diagonal to Cargo Net, then the camera moves in on the knots"><source src="media/bridge-ropes.mp4" type="video/mp4"></video><figcaption class="text-sm text-gray-400 mt-2">Switching from Diagonal to Cargo Net.</figcaption></figure></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center"><div><h3 class="text-xl md:text-2xl font-bold mb-3 text-purple-400">Vellum mode: sag and collision</h3><p class="text-gray-300 mb-3">A Vellum simulation mode makes the bridge sag under gravity and collide with the environment and with its own planks.</p></div><figure><video class="bridge-clip w-full h-auto rounded-lg bg-slate-800" width="960" height="668" poster="media/bridge-sag.jpg" muted loop playsinline preload="none" controls aria-label="The simulation is enabled and the bridge sags, first on its own and then resting on two walls"><source src="media/bridge-sag.mp4" type="video/mp4"></video><figcaption class="text-sm text-gray-400 mt-2">The bridge sagging, then settling over two walls.</figcaption></figure></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center"><div><h3 class="text-xl md:text-2xl font-bold mb-3 text-purple-400">Vellum mode: breaking</h3><p class="text-gray-300 mb-3">The bridge can be broken apart at a location the user chooses. In this clip a box marks the location, and the simulation splits the bridge there.</p></div><figure><video class="bridge-clip w-full h-auto rounded-lg bg-slate-800" width="960" height="668" poster="media/bridge-break.jpg" muted loop playsinline preload="none" controls aria-label="A box is positioned over the bridge, then the simulated bridge splits into two halves"><source src="media/bridge-break.mp4" type="video/mp4"></video><figcaption class="text-sm text-gray-400 mt-2">Positioning the box, then the break.</figcaption></figure></div>
+                <p class="text-sm text-gray-400">Recorded in the Houdini viewport. The Non-Commercial Edition label comes from Houdini Apprentice.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
 <section id="projects" class="pt-24 scroll-mt-[88px]">    
             <div class="container mx-auto">
@@ -837,6 +860,24 @@ If you are hiring for a junior or graduate technical art role, send me a message
                 btn.replaceWith(mv);
             });
         });
+
+        // Bridge clips: fetch and play only while on screen. Posters show until then.
+        const clips = document.querySelectorAll('.bridge-clip');
+        const noAutoplay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+            (navigator.connection && navigator.connection.saveData);
+        if (noAutoplay) {
+            clips.forEach(v => { v.controls = true; });
+        } else if ('IntersectionObserver' in window) {
+            const seen = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { e.target.play().catch(() => { e.target.controls = true; }); }
+                    else { e.target.pause(); }
+                });
+            }, { threshold: 0.4 });
+            clips.forEach(v => seen.observe(v));
+        } else {
+            clips.forEach(v => { v.controls = true; });
+        }
 
         // Modal functions
         function openModal(modalId) {
